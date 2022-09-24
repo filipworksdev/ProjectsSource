@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Word Counter</title>
+  <style>
+    #countvalues {
+      display: inline-block;
+      margin: auto;
+      text-align: left;  
+    }
+    
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #454545;
+      color: #fafafa;
+    }
+
+    textarea {
+      resize: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background: gray;
+      text: white;
+      border-radius: 5px;
+      padding: 10px;
+      border: 2px solid rgb(1,1,1,0);
+    }
+
+    button:hover {
+
+      background: white;
+      text: black;
+    }
+
+    button:active {
+      border: 2px solid black;
+      background: #a3a3a3;
+      text: black;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h2>Word Counter</h2>
+
+  <textarea cols=40 rows=10></textarea>
+  <br><br>
+  <button onclick="count()">Count</button>
+  <br><br>
+  <div id="countvalues">
+    <div id="words">Words: 0</div>
+    <div id="newlines">Newlines: 0</div>
+    <div id="sentences">Sentences: 0</div>
+    <div id="characters">Chars: 0</div>
+  </div>
+
+  <script>
+    const textarea = document.querySelector("textarea")
+    
+    const characters = document.querySelector("#characters")
+    const newlines = document.querySelector("#newlines")
+    const words = document.querySelector("#words")
+    const sentences = document.querySelector("#sentences")
+    
+    function count() {
+      //grab the data
+      var value = textarea.value.trim()
+      //TODO: collapse duplicate spaces
+
+      if (value.length == 0) {
+        words.innerText = "Words: " + 0
+        newlines.innerText = "Newlines: " + 0
+        sentences.innerText = "Sentences: " + 0
+        characters.innerText = "Chars: " + 0
+
+        return
+      }
+      
+      // count characters
+      characters.innerText = "Chars: " + value.length
+      
+      // count words
+      words.innerText = "Words: " + (countChar(value, " ")+1)
+      
+      // count newlines
+      newlines.innerText = "Newlines: " + countChar(value, "\n")
+      
+      // count sentences
+      sentences.innerText = "Sentences: " + ( countChar(value, ".") + countChar(value, ";") + countChar(value, "!") + countChar(value, "?") )
+      
+    }
+
+    function countChar(text, ch) {
+      return text.split(ch).length-1
+    }
+    
+  </script>
+</body>
+
+</html>

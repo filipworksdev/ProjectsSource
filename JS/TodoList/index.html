@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>~ Todo List ~</h1>
+    Search <input type="text" class="text"><br>
+    <input type="checkbox" onclick="hide_completed(this.checked)"> Hide completed items
+
+    <p id="todo-items-left">You have 0 todo items left</p>
+
+    <div id="todo-list">
+      <!-- we going to add todo items in here -->
+    </div>
+
+    <input type="text" id="text" class="text" autocomplete="off">
+    <input type="submit" class="add" value="Add" onclick="add_todo()">
+
+    <script src="script.js"></script>
+
+  </body>
+</html>
